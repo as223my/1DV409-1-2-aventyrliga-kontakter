@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Page Not Found";
+}
+
+<h1>Adventurous Contacts</h1>
+<h2>Error 404</h2>
+
+<p>
+    Oooops! Server returned a 404 (Page not found!) In English it means the page, address, url you are looking for has moved
+    without leaving a forwarding addres! :)
+</p>
+
+@Html.ActionLink("Back to contacts", "Index", "Contact")
+
+@* Error page must be longer than 512 bytes for IE and Chrome to show it.
+    So add padding in case we're short. *@
+@(new string(' ', 512))
+
+@ViewBag.

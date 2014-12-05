@@ -1,0 +1,12 @@
+﻿@model AdventurousContacts.Models.Contact
+
+@{
+    ViewBag.Title = "Edit adventurous contact";
+}
+
+<h2>Edit contact</h2>
+
+<p class="error">@TempData["error"]</p>
+
+@Html.Partial("~/Views/Contact/ContactForm.cshtml")
+

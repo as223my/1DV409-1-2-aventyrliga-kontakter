@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dv409_AdventureWorksAssignmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="uspAddContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspAddContactEF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspAddContact_OUTPUT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person" StoreFunctionName="uspAddContact-OUTPUT">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContactID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspAddContact_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person" StoreFunctionName="uspAddContact-SELECT">
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspRemoveContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspUpdateContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Person">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dv409_AdventureWorksAssignmentModelStoreContainer">
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="Person" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dv409_AdventureWorksAssignmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ContactEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <FunctionImport Name="uspAddContact">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="ContactID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddContactEF" ReturnType="Collection(Decimal)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddContact_OUTPUT">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="ContactID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddContact_SELECT" ReturnType="Collection(Decimal)">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetContact" ReturnType="Collection(dv409_AdventureWorksAssignmentModel.uspGetContact_Result)">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspRemoveContact">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspUpdateContact">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="uspGetContact_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dv409_AdventureWorksAssignmentModelStoreContainer" CdmEntityContainer="ContactEntities">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="dv409_AdventureWorksAssignmentModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="dv409_AdventureWorksAssignmentModel.Contact">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact_SELECT">
+                  <ScalarProperty Name="EmailAddress" ParameterName="EmailAddress" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspRemoveContact">
+                  <ScalarProperty Name="ContactID" ParameterName="ContactID" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspUpdateContact">
+                  <ScalarProperty Name="EmailAddress" ParameterName="EmailAddress" Version="Current" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" Version="Current" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" Version="Current" />
+                  <ScalarProperty Name="ContactID" ParameterName="ContactID" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspAddContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact" />
+          <FunctionImportMapping FunctionImportName="uspAddContactEF" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContactEF" />
+          <FunctionImportMapping FunctionImportName="uspAddContact_OUTPUT" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact_OUTPUT" />
+          <FunctionImportMapping FunctionImportName="uspAddContact_SELECT" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact_SELECT" />
+          <FunctionImportMapping FunctionImportName="uspGetContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspGetContact">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dv409_AdventureWorksAssignmentModel.uspGetContact_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspRemoveContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspRemoveContact" />
+          <FunctionImportMapping FunctionImportName="uspUpdateContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspUpdateContact" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,20 @@
+﻿@model AdventurousContacts.Models.Contact
+
+<h2>Delete contact</h2>
+<br />
+<p class="error">@TempData["error"]</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <p>
+        Are you sure you want to delete <strong>@Model.FirstName @Model.LastName (@Model.EmailAddress)</strong>?
+    </p>
+    <br />
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+}
+
+@Html.ActionLink("Back to contacts", "Index")
